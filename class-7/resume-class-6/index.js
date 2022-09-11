@@ -3,14 +3,16 @@ const useragent = require('express-useragent')
 const path = require("path")
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.NODE_PORT
+const ENV = process.env.NODE_ENV
 
 app.use(express.static(path.join(__dirname, 'files')))
 app.use(useragent.express())
 
 const server = app.listen(PORT, () => {
-  console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
+  console.log(`Servidor http esta escuchando en el puerto ${server.address().port}`)
   console.log(`http://localhost:${server.address().port}`)
+  console.log(`Environment:${ENV}`)
 })
 
 server.on("error", error => console.log(`Error en servidor ${error}`))
