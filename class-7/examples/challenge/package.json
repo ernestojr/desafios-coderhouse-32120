@@ -1,5 +1,5 @@
 {
-  "name": "api-user-profile",
+  "name": "challenge",
   "version": "1.0.0",
   "description": "User Profile API",
   "main": "index.js",
@@ -12,8 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
-    "lodash": "^4.17.21",
-    "mongodb": "^4.9.1"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "dotenv": "^16.0.2",

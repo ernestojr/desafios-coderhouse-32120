@@ -1,21 +1,10 @@
 const express = require('express')
+const BD = require('./data-base')
 
 const app = express()
 
 const PORT = process.env.NODE_PORT
 const ENV = process.env.NODE_ENV
-
-const DATA_BASE = {
-  usuarios: [
-    {
-      id: 1,
-      nombre: 'Carlos Gómez',
-      telefono: '+56900000000',
-      correo: 'carlosgomez@mail.com',
-      estado: 'activo',
-    },
-  ],
-}
 
 const STATUS_CODE = {
   OK: 200,
@@ -26,60 +15,49 @@ const STATUS_CODE = {
 
 app.use(express.json())
 
-app.get('/usuarios', (req, res) => {
-  res.status(200).json(DATA_BASE.usuarios)
+app.get('/usuarios', async (req, res) => {
+  const usuarios = await BD.usuarios.obtener()
+  res.status(STATUS_CODE.OK).json(usuarios)
 })
 
-app.get('/usuarios/:id', (req, res) => {
+app.get('/usuarios/:id', async (req, res) => {
   const idUsuario = req.params.id
-  const find = require('lodash/find')
-  const usuario = find(DATA_BASE.usuarios, usuario => usuario.id === Number(idUsuario))
-  if (!usuario) {
-    console.log(`usuario con id ${idUsuario} no encontrado.`)
-    res.status(STATUS_CODE.NOT_FOUND).end()
-  } else {
-    console.log(`usuario con id ${idUsuario} encontrado.`)
+  try {
+    const usuario = await BD.usuarios.obtenerPorId(idUsuario)
     res.status(STATUS_CODE.OK).json(usuario)
+  } catch (error) {
+    console.log(error.message)
+    res.status(STATUS_CODE.NOT_FOUND).end()
   }
 })
 
-app.post('/usuarios', (req, res) => {
-  const last = require('lodash/last')
+app.post('/usuarios', async (req, res) => {
   const data = req.body
-  data.id = last(DATA_BASE.usuarios).id + 1
   data.estado = 'activo'
-  DATA_BASE.usuarios.push(data)
-  res.status(STATUS_CODE.CREATED).json(last(DATA_BASE.usuarios))
+  const result = await BD.usuarios.crear(data)
+  const usuario = await BD.usuarios.obtenerPorId(result.insertedId)
+  res.status(STATUS_CODE.CREATED).json(usuario)
 })
 
-app.put('/usuarios/:id', (req, res) => {
+app.put('/usuarios/:id', async (req, res) => {
   const idUsuario = req.params.id
-  const find = require('lodash/find')
-  const usuario = find(DATA_BASE.usuarios, usuario => usuario.id === Number(idUsuario))
-  if (!usuario) {
-    console.log(`usuario con id ${idUsuario} no encontrado.`)
+  try {
+    await BD.usuarios.actualizarPorId(idUsuario, req.body)
+    res.status(STATUS_CODE.NO_CONTENT).end()
+  } catch (error) {
+    console.log(error.message)
     res.status(STATUS_CODE.NOT_FOUND).end()
-  } else {
-    const data = req.body
-    usuario.nombre = data.nombre || usuario.nombre
-    usuario.telefono = data.telefono || usuario.telefono
-    usuario.correo = data.correo || usuario.correo
-    usuario.estado = data.estado || usuario.estado
-    res.status(STATUS_CODE.NO_CONTENT).end() 
   }
 })
 
-app.delete('/usuarios/:id', (req, res) => {
+app.delete('/usuarios/:id', async (req, res) => {
   const idUsuario = req.params.id
-  const find = require('lodash/find')
-  const remove = require('lodash/remove')
-  const usuario = find(DATA_BASE.usuarios, usuario => usuario.id === Number(idUsuario))
-  if (!usuario) {
-    console.log(`usuario con id ${idUsuario} no encontrado.`)
-    res.status(STATUS_CODE.NOT_FOUND).end()
-  } else {
-    remove(DATA_BASE.usuarios, usuario => usuario.id === Number(idUsuario))
+  try {
+    await BD.usuarios.borrarPorId(idUsuario)
     res.status(STATUS_CODE.NO_CONTENT).end()
+  } catch (error) {
+    console.log(error.message)
+    res.status(STATUS_CODE.NOT_FOUND).end()
   }
 })
 
