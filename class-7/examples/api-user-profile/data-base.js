@@ -16,7 +16,15 @@ function crear(data) {
 }
 
 async function obtener(query = {}) {
-  const cursor = usuarios.find(query)
+  const criterio = {}
+  if (query.correo) {
+    criterio.correo = query.correo
+  }
+  if (query.telefono) {
+    criterio.telefono = query.telefono
+  }
+  console.log('criterio', criterio)
+  const cursor = usuarios.find(criterio)
   const result = []
   await cursor.forEach((usr) => {
     result.push(usr)
