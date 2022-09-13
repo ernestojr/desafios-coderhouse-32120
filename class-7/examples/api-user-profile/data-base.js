@@ -23,7 +23,6 @@ async function obtener(query = {}) {
   if (query.telefono) {
     criterio.telefono = query.telefono
   }
-  console.log('criterio', criterio)
   const cursor = usuarios.find(criterio)
   const result = []
   await cursor.forEach((usr) => {

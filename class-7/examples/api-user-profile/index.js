@@ -18,7 +18,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/usuarios', async (req, res) => {
   const query = req.query
-  console.log('query', query)
   const usuarios = await BD.usuarios.obtener(query)
   res.status(STATUS_CODE.OK).json(usuarios)
 })

@@ -10,12 +10,13 @@ const STATUS_CODE = {
   CREATED: 201,
   NO_CONTENT: 204,
   NOT_FOUND: 404,
-  BAD_REQUEST: 404,
+  BAD_REQUEST: 400,
 }
 
 const frase = 'Hola mundo cómo están'
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 function esNumero(value) {
   return !isNaN(parseInt(value))
