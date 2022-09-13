@@ -68,13 +68,21 @@ app.put('/api/palabras/:pos', (req, res) => {
   const palabras = frase.split(' ')
   const anterior = palabras[pos - 1]
   palabras[pos - 1] = palabra
-  frase = frase + ' ' + palabra
   frase = palabras.join(' ')
   res.status(STATUS_CODE.OK).json({
     actualizada: palabra,
     anterior,
   })
+})
 
+app.delete('/api/palabras/:pos', (req, res) => {
+  const pos = req.params.pos
+  const palabras = frase.split(' ')
+  const eliminada = palabras.splice(pos -1, 1)
+  frase = palabras.join(' ')
+  res.status(STATUS_CODE.OK).json({
+    eliminada: eliminada[0],
+  })
 })
 
 const server = app.listen(PORT, () => {
