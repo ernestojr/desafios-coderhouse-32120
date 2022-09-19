@@ -10,7 +10,7 @@ router.get('/cte1', (req, res) => {
     autor: 'Lorem Ipsum', 
     version: 1,
   }
-  res.render('platilla', data)
+  res.render('plantilla', data)
 })
 router.get('/cte2', (req, res) => {
   const data = {
@@ -18,7 +18,7 @@ router.get('/cte2', (req, res) => {
     apellido: 'Plasencio',
     fecha: new Date(),
   }
-  res.render('platilla2', data)
+  res.render('plantilla2', data)
 })
 
 module.exports = router
