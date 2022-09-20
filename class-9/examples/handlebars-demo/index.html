@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <span></span> <!-- para inyectar el resultado -->
+  <!-- incluir handlebars desde el CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  <script>
+    const data = { nombre: 'Ignacio', porcentaje: 15 };
+    const text = `<h1>Hola {{nombre}}, te damos la bienvenida</h1>
+    <h2>Te regalamos {{porcentaje}} % para tu próxima compra</h2>`
+    const template = Handlebars.compile(text); // compila la plantilla
+    const html = template(data); // genera el html
+    document.querySelector('span').innerHTML = html; // inyecta el resultado en la vista
+  </script>
+</body>
+</html>
