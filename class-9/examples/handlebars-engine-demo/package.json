@@ -1,7 +1,7 @@
 {
-  "name": "custom-template-engine",
+  "name": "handlebars-engine-demo",
   "version": "1.0.0",
-  "description": "Custom Template Engine",
+  "description": "Handlebars engine demo",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
   },
   "devDependencies": {
     "dotenv": "^16.0.2",

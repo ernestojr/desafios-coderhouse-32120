@@ -10,7 +10,7 @@ router.get('/productos', (req, res) => {
     precio: 12.45, 
     imagen: `${process.env.BASE_HOST}/static/lore-ipsum.jpg`,
   }
-  res.render('index', producto)
+  res.render('productos', producto)
 })
 
 module.exports = router
