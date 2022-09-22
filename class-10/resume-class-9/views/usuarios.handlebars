@@ -1,0 +1,26 @@
+<h1>Usuarios</h1>
+<table id="main">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Edad</th>
+    <th>Email</th>
+    <th>Teléfono</th>
+  </tr>
+  {{#if isEmpty}}
+  <tr>
+    <td>No hay usuarios registrados aún</td>
+  </tr>
+  {{/if}}
+  {{#each usuarios}}
+    <tr>
+      <td><a href="{{@root.detailUrlBase}}/{{this._id}}">{{this._id}}</a></td>
+      <td>{{this.nombre}}</td>
+      <td>{{this.apellido}}</td>
+      <td>{{this.edad}}</td>
+      <td>{{this.correo}}</td>
+      <td>{{this.telefono}}</td>
+    </tr>
+  {{/each}}
+</table>

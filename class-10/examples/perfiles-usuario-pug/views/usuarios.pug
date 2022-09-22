@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1="Usuarios con pug"
+  table
+    tr
+      th="ID"
+      th="Nombre"
+      th="Apellido"
+      th="Edad"
+      th="Email"
+      th="Teléfono"
+    if isEmpty
+      tr
+        td="No hay usuarios registrados aún"
+    each usuario in usuarios
+      tr
+        td
+          a(
+            href=detailUrlBase + "/" + usuario._id
+          )=usuario._id
+        td=usuario.nombre
+        td=usuario.apellido
+        td=usuario.edad
+        td=usuario.correo
+        td=usuario.telefono

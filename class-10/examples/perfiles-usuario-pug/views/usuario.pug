@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1="Detalle de usuario"
+  p="ID: " + _id
+  p="Nombre: " + nombre
+  p="Apellido: " + apellido
+  p="Edad: " + edad
+  p="Teléfono: " + telefono
+  if avatar
+    img(
+      src=avatar
+      alt=nombre
+    )
