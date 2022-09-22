@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1(
+    style={ color: color }
+  )!=titulo
+  meter#my-meter(
+    value=nivel
+    min=min
+    max=max
+  )
+
