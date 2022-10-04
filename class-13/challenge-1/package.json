@@ -1,0 +1,17 @@
+{
+  "name": "challenge-1",
+  "version": "1.0.0",
+  "description": "Babel Color",
+  "main": "color.js",
+  "scripts": {
+    "build": "babel ./color.js -o ./output.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3"
+  }
+}

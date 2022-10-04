@@ -1,0 +1,15 @@
+{
+  "name": "challenge-2",
+  "version": "1.0.0",
+  "description": "TSC Color",
+  "main": "color.js",
+  "scripts": {
+    "build": "node_modules/.bin/tsc ./color.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.8.4"
+  }
+}
