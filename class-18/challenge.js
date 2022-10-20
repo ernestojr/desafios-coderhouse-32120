@@ -86,6 +86,8 @@ db.system.users.find()
 
 mongosh -u "encargado". -p "qwerty123"
 
+use empresa
+
 db.clientes.find({}, { nombre: 1, _id: 0 });
 
 // cerramos la conección y e ingresamos con user y pwd incorrecto
