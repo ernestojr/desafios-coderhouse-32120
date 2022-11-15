@@ -1,0 +1,20 @@
+{
+  "name": "server-mongodb-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "dev": "npx nodemon --exec 'node -r dotenv/config' ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
