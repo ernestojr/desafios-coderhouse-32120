@@ -41,7 +41,7 @@ if (mode === 'cluster' && cluster.isPrimary) { // Require node in version 16 or 
   const server = http.createServer(app)
 
   server.listen(PORT, () => {
-    console.log(`Server running in http://localhost:${PORT}/ from process ${process.pid}`)
+    console.log(`Server running in http://localhost:${PORT}/ from process ${process.pid} in mode ${mode}`)
   })
 }
 
