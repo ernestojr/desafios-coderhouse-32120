@@ -1,0 +1,8 @@
+{"level":"debug","message":"127.0.0.1 - log debug"}
+{"level":"verbose","message":"127.0.0.1 - log verbose"}
+{"level":"info","message":"127.0.0.1 - log info"}
+{"level":"warn","message":"127.0.0.1 - log warn"}
+{"level":"error","message":"127.0.0.1 - log error"}
+{"level":"error","message":"el valor de campo a es invalido"}
+{"level":"error","message":"el valor de campo b es invalido"}
+{"level":"info","message":"El resultado de la suma es 15"}
