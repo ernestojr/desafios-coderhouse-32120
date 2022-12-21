@@ -1,0 +1,17 @@
+{
+  "name": "nodemailer-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.7",
+    "nodemailer": "^6.8.0"
+  }
+}
