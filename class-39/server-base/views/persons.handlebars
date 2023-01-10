@@ -1,0 +1,23 @@
+<h1>Persons</h1>
+
+<form method="post" action="/html-onwire">
+  <input id="name" type="text" name="name" placeholder="Name">
+  <input id="lastname" type="text" name="lastname" placeholder="Lastname">
+  <input id="dni" type="text" name="dni" placeholder="DNI">
+  <input type="submit" value="Save">
+</form>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Lastname</th>
+    <th>DNI</th>
+  </tr>
+  {{#each persons}}
+  <tr>
+    <td>{{name}}</td>
+    <td>{{lastname}}</td>
+    <td>{{dni}}</td>
+  </tr>
+  {{/each}}
+</table>
